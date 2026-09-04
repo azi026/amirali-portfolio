@@ -1,0 +1,63 @@
+import { Project } from '../types';
+import {
+  projectAviation,
+  projectBusinessLanding,
+  projectEditorPortfolio,
+  projectMotionPortfolio,
+} from '../assets';
+
+export const PROJECTS: Project[] = [
+  {
+    id: 'aeris-aviation',
+    title: 'Aeris Aviation',
+    category: 'Luxury Aviation Website Concept',
+    shortDescription: 'A premium website concept created for a luxury aviation brand.',
+    fullDescription: 'A bespoke digital experience designed for an elite private aviation firm. Engineered with dynamic fleet showcases, custom booking inquiry flows, and an understated luxury dark aesthetic that reflects high-end charter standards.',
+    image: projectAviation,
+    role: 'UI Design • Frontend • Motion',
+    technologies: ['UI Design', 'Web Design', 'Responsive', 'Motion'],
+    deliverables: ['UI/UX Design', 'Interactive Showcase', 'Performance Optimization'],
+    year: '2025',
+    liveUrl: '#contact',
+  },
+  {
+    id: 'revenue-systems',
+    title: 'Revenue Systems',
+    category: 'Business Website Concept',
+    shortDescription: 'A modern business website concept focused on conversion and brand positioning.',
+    fullDescription: 'A high-impact enterprise web platform designed to establish authoritative market presence and accelerate sales pipeline conversion. Features structured customer journeys, clear value propositions, and interactive product demonstrations.',
+    image: projectBusinessLanding,
+    role: 'Conversion Design • UI/UX • Architecture',
+    technologies: ['UI Design', 'Web Design', 'Responsive'],
+    deliverables: ['Conversion Architecture', 'Responsive Layout', 'SEO Strategy'],
+    year: '2025',
+    liveUrl: '#contact',
+  },
+  {
+    id: 'framecraft-studio',
+    title: 'FrameCraft Studio',
+    category: 'Creative Portfolio Website',
+    shortDescription: 'A cinematic portfolio concept designed for a creative professional.',
+    fullDescription: 'An editorial visual platform crafted for commercial directors and video editors. Features full-screen showreel previews, seamless media transitions, and a minimalist gallery structure that lets high-production film work take center stage.',
+    image: projectEditorPortfolio,
+    role: 'Art Direction • UI Design • Motion',
+    technologies: ['UI Design', 'Web Design', 'Motion'],
+    deliverables: ['Art Direction', 'Custom Video Player', 'Editorial Layout'],
+    year: '2024',
+    liveUrl: '#contact',
+  },
+  {
+    id: 'kinetic-studio',
+    title: 'Kinetic Studio',
+    category: 'Motion & 3D Portfolio',
+    shortDescription: 'A visual portfolio concept focused on animation and interactive experiences.',
+    fullDescription: 'An immersive agency portfolio showcasing interactive 3D elements, fluid kinetic typography, and smooth page transitions built to captivate forward-thinking creative clients and brands.',
+    image: projectMotionPortfolio,
+    role: 'Interactive 3D • UI Design • Motion',
+    technologies: ['UI Design', 'Web Design', 'Responsive', 'Motion'],
+    deliverables: ['3D WebGL Interactions', 'Kinetic Typography', 'Creative Direction'],
+    year: '2024',
+    liveUrl: '#contact',
+  },
+];
+

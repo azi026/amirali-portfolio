@@ -1,0 +1,234 @@
+/* Project Details Modal Styles */
+.project-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(4, 5, 7, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  overflow-y: auto;
+}
+
+.project-modal-dialog {
+  position: relative;
+  width: 100%;
+  max-width: 860px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-medium);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.8), 0 0 40px var(--accent-teal-subtle);
+  margin: auto;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Modal Close Button */
+.project-modal-close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(9, 10, 12, 0.8);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-smooth);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.project-modal-close:hover {
+  background: var(--accent-teal-subtle);
+  border-color: var(--accent-teal-border);
+  color: var(--text-primary);
+  transform: scale(1.05);
+}
+
+/* Modal Scrollable Container */
+.project-modal-scroll {
+  overflow-y: auto;
+  padding: 0;
+}
+
+/* Modal Large Image */
+.project-modal-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 380px;
+  background: var(--bg-primary);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.project-modal-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 10px;
+  display: block;
+}
+
+.project-modal-image-fade {
+  display: none;
+}
+
+/* Modal Content Area */
+.project-modal-body {
+  padding: 2rem 2.5rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.project-modal-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.project-modal-category {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent-teal);
+}
+
+.project-modal-title {
+  font-size: clamp(1.6rem, 3vw, 2.25rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+}
+
+.project-modal-description {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+/* Technologies Section */
+.project-modal-tech-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.project-modal-section-label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+
+.project-modal-tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.project-modal-tech-pill {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  background: var(--bg-surface-subtle);
+  border: 1px solid var(--border-medium);
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  transition: all var(--transition-smooth);
+}
+
+.project-modal-tech-pill:hover {
+  border-color: var(--accent-teal-border);
+  color: var(--accent-teal);
+  background: var(--accent-teal-subtle);
+}
+
+/* Modal Actions */
+.project-modal-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.project-modal-btn-close {
+  padding: 0.75rem 1.4rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: var(--bg-surface-subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: 9999px;
+  transition: all var(--transition-smooth);
+}
+
+.project-modal-btn-close:hover {
+  color: var(--text-primary);
+  border-color: var(--border-medium);
+}
+
+.project-modal-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.6rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #ffffff;
+  background: var(--accent-teal);
+  border: 1px solid var(--accent-teal);
+  border-radius: 9999px;
+  transition: all var(--transition-smooth);
+}
+
+.project-modal-btn-primary:hover {
+  background: var(--accent-teal-hover);
+  border-color: var(--accent-teal-hover);
+  box-shadow: 0 4px 18px var(--accent-teal-glow);
+}
+
+/* Responsive */
+@media (max-width: 680px) {
+  .project-modal-body {
+    padding: 1.5rem;
+    gap: 1.25rem;
+  }
+
+  .project-modal-image-wrapper {
+    height: 240px;
+  }
+
+  .project-modal-actions {
+    flex-direction: column-reverse;
+    width: 100%;
+  }
+
+  .project-modal-btn-close,
+  .project-modal-btn-primary {
+    width: 100%;
+    justify-content: center;
+  }
+}

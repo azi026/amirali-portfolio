@@ -1,0 +1,716 @@
+/* Pricing / Services Section - Amirali Damirchilo Editorial Theme */
+
+.pricing-section {
+  position: relative;
+  padding: clamp(2.25rem, 3.5vh, 3rem) 0 clamp(2.75rem, 4.5vh, 3.75rem);
+  scroll-margin-top: var(--header-height);
+  background-color: var(--bg-primary);
+  border-top: 1px solid var(--border-subtle);
+  overflow: hidden;
+}
+
+/* Subtle ambient backdrop aura */
+.pricing-ambient-glow {
+  position: absolute;
+  top: 30%;
+  right: -5%;
+  width: 540px;
+  height: 540px;
+  background: radial-gradient(
+    circle,
+    rgba(5, 101, 92, 0.12) 0%,
+    rgba(5, 101, 92, 0.02) 50%,
+    transparent 70%
+  );
+  filter: blur(110px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.pricing-container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Section Header */
+.pricing-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 680px;
+  margin-bottom: clamp(1.25rem, 2vh, 1.625rem);
+}
+
+.pricing-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--accent-teal);
+  margin-bottom: 0.5rem;
+}
+
+.pricing-tag-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--accent-teal);
+  box-shadow: 0 0 8px var(--accent-teal);
+}
+
+.pricing-title {
+  font-size: clamp(2rem, 3.2vw, 2.875rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  overflow-wrap: break-word;
+}
+
+.pricing-title-serif {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent-teal);
+  letter-spacing: -0.02em;
+}
+
+.pricing-subtitle {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  overflow-wrap: break-word;
+}
+
+/* 3 Cards Grid (Desktop: 3 in a row, all equal height) */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.25rem, 1.8vw, 2rem);
+  align-items: stretch;
+  padding-top: 0.5rem;
+}
+
+/* Pricing Card - Equal Height Flex Column */
+.pricing-card {
+  position: relative;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  padding: clamp(1.5rem, 2vh, 1.875rem) clamp(1.35rem, 1.6vw, 1.75rem);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  will-change: transform, opacity;
+  box-sizing: border-box;
+}
+
+/* Elevated Primary Recommended Card (Business Website) */
+.pricing-card--popular {
+  border-color: rgba(45, 212, 191, 0.38);
+  background: linear-gradient(180deg, rgba(45, 212, 191, 0.05) 0%, #15181f 28%, #101216 100%);
+  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.75), 0 0 32px -4px rgba(45, 212, 191, 0.15);
+}
+
+/* Subtle Premium Emphasis (Premium Experience) */
+.pricing-card--premium {
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.75), 0 0 32px -4px rgba(255, 255, 255, 0.08);
+}
+
+/* Desktop hover interactions only on fine pointer devices */
+@media (hover: hover) and (pointer: fine) {
+  .pricing-card:hover {
+    border-color: rgba(255, 255, 255, 0.22);
+    box-shadow: 0 14px 36px -8px rgba(0, 0, 0, 0.65);
+  }
+
+  .pricing-card--popular:hover {
+    border-color: rgba(45, 212, 191, 0.65);
+    box-shadow: 0 20px 48px -10px rgba(0, 0, 0, 0.8), 0 0 40px -2px rgba(45, 212, 191, 0.25);
+  }
+
+  .pricing-card--premium:hover {
+    border-color: rgba(255, 255, 255, 0.32);
+    box-shadow: 0 20px 48px -10px rgba(0, 0, 0, 0.8), 0 0 40px -2px rgba(255, 255, 255, 0.14);
+  }
+}
+
+/* Subtle Badge Above the Card */
+.pricing-popular-badge-floating {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #2dd4bf;
+  background: #0c1415;
+  border: 1px solid rgba(45, 212, 191, 0.45);
+  padding: 0.26rem 0.8rem;
+  border-radius: 9999px;
+  line-height: 1;
+  white-space: nowrap;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.7), 0 0 16px -2px rgba(45, 212, 191, 0.18);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.pricing-popular-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: #2dd4bf;
+  box-shadow: 0 0 6px rgba(45, 212, 191, 0.8);
+}
+
+/* Card Top Section */
+.pricing-card-top {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  margin-bottom: 1rem;
+  flex-shrink: 0;
+}
+
+.pricing-card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  min-height: 24px;
+}
+
+.pricing-card-tag {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  padding: 0.22rem 0.65rem;
+  border-radius: 9999px;
+  line-height: 1;
+}
+
+.pricing-card--popular .pricing-card-tag {
+  color: #2dd4bf;
+  background: rgba(45, 212, 191, 0.08);
+  border-color: rgba(45, 212, 191, 0.3);
+}
+
+.pricing-card-index {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-teal);
+}
+
+.pricing-card-heading-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.pricing-card-title {
+  font-size: 1.375rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: #ffffff;
+  line-height: 1.2;
+  overflow-wrap: break-word;
+}
+
+.pricing-card-positioning {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+  overflow-wrap: break-word;
+}
+
+/* Price Block - Strongest Visual Element After Title */
+.pricing-card-price-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  margin-top: 0.35rem;
+  margin-bottom: 0.25rem;
+}
+
+.pricing-card-price-prefix {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+
+.pricing-card-price-amount {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: break-word;
+}
+
+.pricing-card--popular .pricing-card-price-amount {
+  text-shadow: 0 0 24px rgba(45, 212, 191, 0.2);
+}
+
+.pricing-card-desc {
+  font-size: 0.8875rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  margin-top: 0.15rem;
+  overflow-wrap: break-word;
+  text-wrap: pretty;
+}
+
+/* Feature Points Section - Flex auto to absorb remaining height */
+.pricing-card-features {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  padding-top: 0.875rem;
+  margin-bottom: 1.25rem; /* Dedicated bottom spacing before the CTA */
+  border-top: 1px solid var(--border-subtle);
+}
+
+.pricing-features-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.pricing-feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: var(--text-secondary);
+  overflow-wrap: break-word;
+}
+
+.pricing-feature-icon-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: var(--accent-teal-subtle);
+  border: 1px solid var(--accent-teal-border);
+  color: var(--accent-teal);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.pricing-feature-text {
+  flex: 1;
+  overflow-wrap: break-word;
+}
+
+/* Card Footer & Horizontal CTA Placement - Strictly pinned to bottom */
+.pricing-card-footer {
+  width: 100%;
+  margin-top: auto;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Subtle Card CTA Button */
+.pricing-card-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  min-height: 46px;
+  box-sizing: border-box;
+  padding: 0.75rem 1.25rem;
+  background-color: var(--bg-surface-elevated);
+  border: 1px solid var(--border-medium);
+  border-radius: 10px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow-wrap: break-word;
+  transition: background-color var(--transition-smooth),
+              border-color var(--transition-smooth),
+              color var(--transition-smooth),
+              transform 0.15s ease;
+}
+
+.pricing-card--popular .pricing-card-cta {
+  background-color: var(--accent-teal);
+  border-color: var(--accent-teal);
+  color: #ffffff;
+}
+
+.pricing-card-cta:focus-visible {
+  outline: 2px solid var(--accent-teal);
+  outline-offset: 2px;
+}
+
+.pricing-card-cta:active {
+  transform: scale(0.985);
+}
+
+.pricing-card-cta-arrow {
+  display: inline-block;
+  transition: transform var(--transition-smooth);
+}
+
+/* Desktop hover interaction only on fine pointer devices */
+@media (hover: hover) and (pointer: fine) {
+  .pricing-card-cta:hover {
+    background-color: var(--accent-teal);
+    border-color: var(--accent-teal);
+    color: #ffffff;
+  }
+
+  .pricing-card-cta:hover .pricing-card-cta-arrow {
+    transform: translateX(4px);
+  }
+
+  .pricing-card--popular .pricing-card-cta:hover {
+    background-color: #24bfa9;
+    border-color: #24bfa9;
+  }
+}
+
+/* Short Desktop Viewports (prevents CTA buttons from going below the viewport) */
+@media (min-width: 1025px) and (max-height: 850px) {
+  .pricing-section {
+    padding: 2rem 0 2.25rem;
+  }
+
+  .pricing-header {
+    margin-bottom: 1rem;
+  }
+
+  .pricing-tag {
+    margin-bottom: 0.35rem;
+  }
+
+  .pricing-title {
+    font-size: 2.125rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .pricing-card {
+    padding: 1.35rem 1.35rem;
+  }
+
+  .pricing-card-top {
+    gap: 0.45rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .pricing-card-price-amount {
+    font-size: 2rem;
+  }
+
+  .pricing-card-features {
+    padding-top: 0.65rem;
+    margin-bottom: 1rem;
+  }
+
+  .pricing-features-list {
+    gap: 0.4rem;
+  }
+
+  .pricing-feature-item {
+    font-size: 0.8125rem;
+    line-height: 1.35;
+  }
+}
+
+/* Responsive Behavior */
+
+/* Tablet (below 1024px down to 769px) */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .pricing-section {
+    padding: 4.5rem 0 5.5rem;
+  }
+
+  .pricing-container {
+    padding: 0 1.5rem;
+  }
+
+  .pricing-header {
+    max-width: 600px;
+    margin-bottom: 2.5rem;
+  }
+
+  .pricing-title {
+    font-size: 2.25rem;
+  }
+
+  /* Balanced single-column stack with ample breathing room */
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    max-width: 600px;
+    margin: 0 auto;
+    gap: 2.25rem;
+    padding-top: 1rem;
+  }
+
+  .pricing-card {
+    height: auto;
+    padding: 2.25rem 2rem;
+  }
+
+  .pricing-card-price-amount {
+    font-size: 2.375rem;
+  }
+}
+
+/* Mobile Devices (max-width: 768px) */
+@media (max-width: 768px) {
+  .pricing-section {
+    padding: 3.75rem 0 4.75rem;
+  }
+
+  /* Exactly 20px horizontal padding */
+  .pricing-container {
+    padding: 0 20px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .pricing-header {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .pricing-title {
+    font-size: 2rem;
+    line-height: 1.2;
+    overflow-wrap: break-word;
+    text-wrap: balance;
+  }
+
+  .pricing-subtitle {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    max-width: 100%;
+    margin: 0 auto;
+    overflow-wrap: break-word;
+  }
+
+  /* Make pricing cards fill the available mobile content width */
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    gap: 1.75rem; /* 28px comfortable spacing between cards (24–32px) */
+    padding-top: 0.875rem;
+  }
+
+  .pricing-card {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    min-height: auto;
+    padding: 1.625rem 1.375rem;
+    border-radius: 16px;
+    box-sizing: border-box;
+    overflow: visible;
+  }
+
+  .pricing-card-top {
+    gap: 0.5rem;
+    margin-bottom: 1.125rem;
+  }
+
+  .pricing-card-heading-group {
+    gap: 0.15rem;
+  }
+
+  .pricing-card-title {
+    font-size: 1.35rem;
+    line-height: 1.2;
+    overflow-wrap: break-word;
+  }
+
+  .pricing-card-positioning {
+    font-size: 0.8125rem;
+    line-height: 1.35;
+    color: #9aa1b0;
+    overflow-wrap: break-word;
+  }
+
+  .pricing-card-price-block {
+    margin-top: 0.25rem;
+    margin-bottom: 0.15rem;
+    gap: 0.1rem;
+  }
+
+  .pricing-card-price-prefix {
+    font-size: 0.6875rem;
+    letter-spacing: 0.12em;
+  }
+
+  /* Keep prices large and easy to scan */
+  .pricing-card-price-amount {
+    font-size: 2.25rem;
+    line-height: 1.05;
+    overflow-wrap: break-word;
+  }
+
+  /* Optimize long descriptions for mobile readability */
+  .pricing-card-desc {
+    font-size: 0.8875rem;
+    line-height: 1.48;
+    color: #b8bec9;
+    letter-spacing: -0.01em;
+    text-wrap: pretty;
+    word-break: normal;
+    overflow-wrap: break-word;
+    margin-top: 0.15rem;
+  }
+
+  .pricing-card-features {
+    padding-top: 0.875rem;
+    margin-bottom: 1.5rem; /* Balanced editorial spacing before the CTA button */
+  }
+
+  .pricing-features-list {
+    gap: 0.525rem;
+  }
+
+  .pricing-feature-item {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    gap: 0.625rem;
+    overflow-wrap: break-word;
+  }
+
+  .pricing-feature-text {
+    overflow-wrap: break-word;
+  }
+
+  .pricing-card-footer {
+    width: 100%;
+    margin-top: auto;
+    flex-shrink: 0;
+  }
+
+  /* Make all CTA buttons full width with comfortable touch height */
+  .pricing-card-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 52px;
+    padding: 0.875rem 1.25rem;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    border-radius: 8px;
+    box-sizing: border-box;
+    text-align: center;
+    white-space: normal;
+    overflow-wrap: break-word;
+  }
+
+  /* Ensure MOST POPULAR badge stays perfectly aligned on the Business Website card */
+  .pricing-popular-badge-floating {
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    text-align: center;
+  }
+}
+
+/* Ultra-compact Mobile Devices (max-width: 380px) */
+@media (max-width: 380px) {
+  .pricing-container {
+    padding: 0 20px; /* Preserve 20px side padding */
+  }
+
+  .pricing-title {
+    font-size: 1.75rem;
+  }
+
+  .pricing-card {
+    padding: 1.5rem 1.125rem;
+  }
+
+  .pricing-card-top {
+    gap: 0.45rem;
+    margin-bottom: 0.875rem;
+  }
+
+  .pricing-card-title {
+    font-size: 1.25rem;
+  }
+
+  .pricing-card-positioning {
+    font-size: 0.775rem;
+  }
+
+  .pricing-card-price-amount {
+    font-size: 2.125rem;
+  }
+
+  .pricing-card-desc {
+    font-size: 0.85rem;
+    line-height: 1.45;
+  }
+
+  .pricing-card-features {
+    padding-top: 0.75rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .pricing-features-list {
+    gap: 0.45rem;
+  }
+
+  .pricing-popular-badge-floating {
+    font-size: 0.65rem;
+    padding: 0.24rem 0.72rem;
+  }
+
+  .pricing-card-cta {
+    min-height: 52px;
+    padding: 0.85rem 1rem;
+    font-size: 0.875rem;
+  }
+}

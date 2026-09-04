@@ -1,0 +1,377 @@
+/* Hero Section Styles */
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: calc(var(--header-height) + 3.5rem);
+  padding-bottom: 5rem;
+  overflow: hidden;
+}
+
+/* Subtle ambient backdrop grid/glow - minimalist & restrained */
+.hero-ambient-glow {
+  position: absolute;
+  top: 15%;
+  right: 12%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, rgba(16, 185, 129, 0) 70%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: center;
+  gap: 4rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Left Column: Content & Copy */
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.hero-heading-wrapper {
+  overflow: hidden;
+  margin-bottom: 2.25rem;
+}
+
+.hero-heading {
+  font-size: clamp(2.75rem, 5.2vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+  color: #ffffff;
+}
+
+.hero-heading-line {
+  display: block;
+}
+
+.hero-heading-emphasis {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent-teal);
+  letter-spacing: -0.02em;
+}
+
+.hero-description {
+  font-size: clamp(1.0625rem, 1.3vw, 1.25rem);
+  line-height: 1.65;
+  color: var(--text-secondary);
+  max-width: 520px;
+  margin-bottom: 2.75rem;
+  font-weight: 400;
+}
+
+/* CTA Group */
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.hero-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.95rem 1.85rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: var(--accent-teal);
+  border: 1px solid var(--accent-teal);
+  border-radius: 9999px;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.3s ease,
+              border-color 0.3s ease,
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              color 0.3s ease;
+  cursor: pointer;
+}
+
+.hero-btn-icon-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-btn-primary:hover {
+  background-color: var(--accent-teal-hover);
+  border-color: var(--accent-teal-hover);
+  color: #ffffff;
+  box-shadow: 0 6px 24px var(--accent-teal-glow);
+  transform: translateY(-2px);
+}
+
+.hero-btn-primary:hover .hero-btn-icon-wrap {
+  transform: translate(2px, -2px);
+}
+
+.hero-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.95rem 1.85rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  white-space: nowrap;
+  color: var(--text-primary);
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 9999px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.3s ease,
+              border-color 0.3s ease,
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              color 0.3s ease;
+  cursor: pointer;
+}
+
+.hero-btn-secondary:hover {
+  border-color: rgba(255, 255, 255, 0.38);
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
+  transform: translateY(-2px);
+}
+
+.hero-btn-secondary:hover .hero-btn-icon-down {
+  transform: translateY(3px);
+}
+
+/* Right Column: Portrait Composition */
+.hero-visual-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.hero-portrait-stage {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+}
+
+/* Subtle teal backdrop aura directly behind portrait - soft, feathered ambient glow */
+.hero-portrait-aura {
+  position: absolute;
+  inset: -14px;
+  background: radial-gradient(
+    circle at 55% 50%,
+    rgba(5, 101, 92, 0.24) 0%,
+    rgba(5, 101, 92, 0.10) 45%,
+    transparent 70%
+  );
+  border-radius: 32px;
+  filter: blur(28px);
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+/* Premium studio portrait container: elevated with soft shadow and sleek rounded corners */
+.hero-portrait-container {
+  position: relative;
+  z-index: 2;
+  border-radius: 24px;
+  overflow: hidden;
+  background: var(--bg-surface);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 
+    0 24px 50px -12px rgba(0, 0, 0, 0.65),
+    0 10px 25px -8px rgba(0, 0, 0, 0.45),
+    0 0 45px -10px rgba(5, 101, 92, 0.22);
+  transition: box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.35s ease;
+}
+
+.hero-portrait-container:hover {
+  border-color: rgba(5, 101, 92, 0.35);
+  box-shadow: 
+    0 28px 56px -12px rgba(0, 0, 0, 0.72),
+    0 12px 28px -6px rgba(0, 0, 0, 0.5),
+    0 0 55px -8px rgba(5, 101, 92, 0.3);
+}
+
+.hero-portrait-img {
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.hero-portrait-container:hover .hero-portrait-img {
+  transform: scale(1.025);
+}
+
+/* Delicate bottom anchor gradient that preserves portrait sharpness and natural lighting */
+.hero-portrait-blend {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(9, 10, 12, 0.3) 0%, transparent 16%);
+  pointer-events: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .hero-container {
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 2.5rem;
+  }
+  
+  .hero-portrait-img {
+    height: 460px;
+  }
+}
+
+@media (max-width: 860px) {
+  .hero-section {
+    min-height: auto;
+    padding-top: calc(64px + 1.5rem);
+    padding-bottom: 2.5rem;
+  }
+
+  .hero-container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    text-align: left;
+    padding: 0 1.5rem;
+  }
+
+  .hero-content {
+    align-items: flex-start;
+  }
+
+  .hero-heading-wrapper {
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-heading {
+    font-size: clamp(2.15rem, 6vw, 3rem);
+    line-height: 1.12;
+  }
+
+  .hero-actions {
+    gap: 0.9rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .hero-btn-primary,
+  .hero-btn-secondary {
+    padding: 0.85rem 1.6rem;
+    font-size: 0.875rem;
+  }
+
+  .hero-visual-wrapper {
+    width: 100%;
+    margin-top: -0.25rem;
+  }
+
+  .hero-portrait-stage {
+    max-width: 304px;
+    margin: 0 auto;
+  }
+
+  .hero-portrait-img {
+    height: 314px;
+  }
+}
+
+@media (max-width: 540px) {
+  .hero-section {
+    padding-top: calc(64px + 1.25rem);
+    padding-bottom: 3.25rem;
+  }
+
+  .hero-container {
+    gap: 1.35rem;
+    padding: 0 1.25rem;
+  }
+
+  .hero-heading-wrapper {
+    margin-bottom: 1.35rem;
+  }
+
+  .hero-heading {
+    font-size: clamp(1.85rem, 7.5vw, 2.35rem);
+    line-height: 1.14;
+    letter-spacing: -0.03em;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.875rem;
+    width: 100%;
+    margin-bottom: 0;
+  }
+
+  .hero-btn-primary {
+    flex: 1 1 auto;
+    min-width: 140px;
+    padding: 0.78rem 1.25rem;
+    font-size: 0.84375rem;
+    white-space: nowrap;
+    justify-content: center;
+  }
+
+  .hero-btn-secondary {
+    flex: 1 1 auto;
+    min-width: 135px;
+    padding: 0.78rem 1.25rem;
+    font-size: 0.84375rem;
+    white-space: nowrap;
+    justify-content: center;
+  }
+
+  .hero-visual-wrapper {
+    margin-top: -0.35rem;
+  }
+
+  .hero-portrait-stage {
+    max-width: 208px;
+  }
+
+  .hero-portrait-container {
+    border-radius: 18px;
+    box-shadow: 
+      0 16px 36px -10px rgba(0, 0, 0, 0.65),
+      0 6px 18px -6px rgba(0, 0, 0, 0.45),
+      0 0 35px -8px rgba(5, 101, 92, 0.2);
+  }
+
+  .hero-portrait-img {
+    height: 222px;
+  }
+
+  .hero-portrait-aura {
+    inset: -8px;
+    border-radius: 22px;
+    filter: blur(18px);
+  }
+}

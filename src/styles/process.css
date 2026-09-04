@@ -1,0 +1,322 @@
+/* Process Section - Amirali Damirchilo Editorial Theme */
+
+.process-section {
+  position: relative;
+  padding: 5.15rem 0 7.5rem;
+  scroll-margin-top: var(--header-height);
+  background-color: var(--bg-primary);
+  border-top: 1px solid var(--border-subtle);
+  overflow: hidden;
+}
+
+/* Subtle ambient backdrop teal glow */
+.process-ambient-glow {
+  position: absolute;
+  top: 30%;
+  right: -8%;
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(
+    circle,
+    rgba(5, 101, 92, 0.14) 0%,
+    rgba(5, 101, 92, 0.03) 50%,
+    transparent 70%
+  );
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.process-container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Section Header */
+.process-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 680px;
+  margin-bottom: 3.5rem;
+}
+
+.process-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--accent-teal);
+  margin-bottom: 1rem;
+}
+
+.process-tag-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--accent-teal);
+  box-shadow: 0 0 8px var(--accent-teal);
+}
+
+.process-title {
+  font-size: clamp(2.2rem, 3.8vw, 3.25rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  margin-bottom: 0.875rem;
+}
+
+.process-title-serif {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent-teal);
+  letter-spacing: -0.02em;
+}
+
+.process-subtitle {
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+}
+
+/* Process Grid: 4 steps in progression */
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+/* Step Card */
+.process-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  padding: 2.25rem 1.75rem;
+  position: relative;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform, opacity;
+}
+
+/* Soft teal ambient glow during card entrance */
+.process-card-glow {
+  position: absolute;
+  inset: -1px;
+  border-radius: 16px;
+  border: 1px solid rgba(5, 101, 92, 0.45);
+  box-shadow: 0 0 28px -2px rgba(5, 101, 92, 0.32);
+  pointer-events: none;
+  z-index: 1;
+  will-change: opacity;
+}
+
+.process-card:hover {
+  transform: translateY(-4px) !important;
+  border-color: rgba(5, 101, 92, 0.55);
+  box-shadow: 
+    0 16px 32px -10px rgba(0, 0, 0, 0.65),
+    0 0 22px -2px rgba(5, 101, 92, 0.25);
+}
+
+/* Top accent hairline inside card */
+.process-card-accent {
+  position: absolute;
+  top: 0;
+  left: 1.75rem;
+  right: 1.75rem;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-teal), transparent);
+  opacity: 0;
+  border-radius: 2px;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+}
+
+.process-card:hover .process-card-accent {
+  opacity: 1;
+}
+
+/* Step Number indicator */
+.process-card-num-box {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba(5, 101, 92, 0.12);
+  border: 1px solid rgba(5, 101, 92, 0.32);
+  margin-bottom: 1.75rem;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.process-card:hover .process-card-num-box {
+  background: rgba(5, 101, 92, 0.18);
+  border-color: rgba(5, 101, 92, 0.48);
+}
+
+.process-card-num {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--accent-teal);
+  letter-spacing: 0.05em;
+  font-variant-numeric: tabular-nums;
+  transition: color 0.3s ease;
+}
+
+.process-card:hover .process-card-num {
+  color: #0ca696;
+}
+
+/* Step Heading: 01 — Discovery */
+.process-card-heading {
+  position: relative;
+  z-index: 2;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.875rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.process-card-heading-prefix {
+  color: var(--accent-teal);
+  font-weight: 600;
+  font-size: 1.0625rem;
+}
+
+.process-card-heading-title {
+  color: #ffffff;
+}
+
+/* Step Description */
+.process-card-desc {
+  position: relative;
+  z-index: 2;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  margin-top: auto;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1100px) {
+  .process-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .process-card {
+    padding: 2rem 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .process-section {
+    padding: 4.25rem 0 5rem;
+  }
+
+  .process-container {
+    padding: 0 1.5rem;
+  }
+
+  .process-header {
+    margin-bottom: 2.25rem;
+  }
+
+  .process-title {
+    font-size: 2.125rem;
+  }
+
+  .process-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .process-card {
+    padding: 1.25rem 1.35rem;
+  }
+
+  .process-card-accent {
+    left: 1.35rem;
+    right: 1.35rem;
+  }
+
+  .process-card-num-box {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 1.05rem;
+  }
+
+  .process-card-heading {
+    margin-bottom: 0.75rem;
+  }
+
+  .process-card-desc {
+    font-size: 0.9375rem;
+    line-height: 1.65;
+  }
+}
+
+@media (max-width: 540px) {
+  .process-section {
+    padding: 3.75rem 0 4.5rem;
+  }
+
+  .process-container {
+    padding: 0 1.25rem;
+  }
+
+  .process-header {
+    margin-bottom: 2rem;
+  }
+
+  .process-title {
+    font-size: 1.85rem;
+  }
+
+  .process-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .process-card {
+    padding: 1.15rem 1.15rem;
+  }
+
+  .process-card-accent {
+    left: 1.15rem;
+    right: 1.15rem;
+  }
+
+  .process-card-num-box {
+    width: 38px;
+    height: 38px;
+    margin-bottom: 0.95rem;
+  }
+
+  .process-card-heading {
+    margin-bottom: 0.7rem;
+  }
+
+  .process-card-desc {
+    font-size: 0.925rem;
+    line-height: 1.62;
+  }
+}

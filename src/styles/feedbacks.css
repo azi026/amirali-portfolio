@@ -1,0 +1,237 @@
+/* Feedbacks Section - Amirali Damirchilo Editorial Theme */
+
+.feedbacks-section {
+  position: relative;
+  padding: 5.5rem 0 7.5rem;
+  scroll-margin-top: var(--header-height);
+  background-color: var(--bg-primary);
+  border-top: 1px solid var(--border-subtle);
+  overflow: hidden;
+}
+
+/* Atmospheric backdrop ambient teal aura */
+.feedbacks-ambient-glow {
+  position: absolute;
+  top: 35%;
+  left: -8%;
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(
+    circle,
+    rgba(5, 101, 92, 0.12) 0%,
+    rgba(5, 101, 92, 0.02) 50%,
+    transparent 70%
+  );
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.feedbacks-container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Section Header */
+.feedbacks-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 680px;
+  margin-bottom: 3.5rem;
+}
+
+.feedbacks-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--accent-teal);
+  margin-bottom: 1rem;
+}
+
+.feedbacks-tag-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--accent-teal);
+  box-shadow: 0 0 8px var(--accent-teal);
+}
+
+.feedbacks-title {
+  font-size: clamp(2.2rem, 3.8vw, 3.25rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  margin-bottom: 0.875rem;
+}
+
+.feedbacks-title-serif {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent-teal);
+  letter-spacing: -0.02em;
+}
+
+.feedbacks-subtitle {
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+}
+
+/* Feedbacks Grid: 3 cards in a row on desktop, stacked on mobile */
+.feedbacks-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+}
+
+/* Feedback Card */
+.feedback-card {
+  position: relative;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 14px;
+  padding: 2.25rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  will-change: transform, opacity;
+}
+
+.feedback-card:hover {
+  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow: 0 10px 26px -6px rgba(0, 0, 0, 0.5);
+}
+
+/* Quote Icon Container */
+.feedback-quote-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background-color: var(--accent-teal-subtle);
+  border: 1px solid var(--accent-teal-border);
+  color: var(--accent-teal);
+  margin-bottom: 1.5rem;
+}
+
+/* Feedback Body Text */
+.feedback-text {
+  font-size: 0.985rem;
+  line-height: 1.72;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  flex-grow: 1;
+}
+
+/* Client Identity Footer */
+.feedback-author {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.feedback-author-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+.feedback-author-role {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1024px) {
+  .feedbacks-grid {
+    gap: 1.25rem;
+  }
+
+  .feedback-card {
+    padding: 2rem 1.65rem;
+  }
+}
+
+@media (max-width: 860px) {
+  .feedbacks-section {
+    padding: 4.5rem 0 5.5rem;
+  }
+
+  .feedbacks-container {
+    padding: 0 1.5rem;
+  }
+
+  .feedbacks-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .feedbacks-title {
+    font-size: 2.125rem;
+  }
+
+  .feedbacks-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .feedback-card {
+    padding: 1.75rem 1.5rem;
+  }
+}
+
+@media (max-width: 540px) {
+  .feedbacks-section {
+    padding: 3.75rem 0 4.5rem;
+  }
+
+  .feedbacks-container {
+    padding: 0 1.25rem;
+  }
+
+  .feedbacks-header {
+    margin-bottom: 2rem;
+  }
+
+  .feedbacks-title {
+    font-size: 1.85rem;
+  }
+
+  .feedbacks-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .feedback-card {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .feedback-quote-wrapper {
+    width: 38px;
+    height: 38px;
+    margin-bottom: 1.25rem;
+  }
+
+  .feedback-text {
+    font-size: 0.9375rem;
+    line-height: 1.65;
+    margin-bottom: 1.5rem;
+  }
+}

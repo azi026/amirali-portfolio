@@ -1,0 +1,137 @@
+/* Minimal Premium Footer Section - Amirali Damirchilo Editorial Theme */
+
+.footer-section {
+  position: relative;
+  background-color: var(--bg-primary);
+  border-top: 1px solid var(--border-subtle);
+  padding: clamp(2.2rem, 3vh, 2.75rem) 0 clamp(1.75rem, 2.5vh, 2.25rem);
+  color: var(--text-primary);
+}
+
+.footer-container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 2rem;
+  box-sizing: border-box;
+}
+
+/* Main Content: Clean Horizontal Balance on Desktop */
+.footer-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 3rem;
+  margin-bottom: clamp(2rem, 3.2vh, 2.75rem);
+}
+
+/* Left: Brand Column */
+.footer-brand-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  max-width: 440px;
+}
+
+.footer-brand-name {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #ffffff;
+  line-height: 1.2;
+}
+
+.footer-description {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0;
+  text-wrap: pretty;
+  overflow-wrap: break-word;
+}
+
+/* Right: Social Icons (LinkedIn & GitHub) */
+.footer-socials {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-top: 0.15rem;
+}
+
+.footer-social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  text-decoration: none;
+  padding: 0.25rem;
+  transition: color var(--transition-smooth);
+}
+
+.footer-social-link:hover {
+  color: #2dd4bf;
+}
+
+/* Subtle Divider Line */
+.footer-divider {
+  width: 100%;
+  height: 1px;
+  background-color: var(--border-subtle);
+  margin-bottom: clamp(1.25rem, 2vh, 1.75rem);
+}
+
+/* Bottom Area: Copyright */
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-copyright {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Responsive: Mobile Stack */
+@media (max-width: 768px) {
+  .footer-section {
+    padding: 1.8rem 0 1.875rem;
+  }
+
+  .footer-container {
+    padding: 0 20px;
+  }
+
+  .footer-main {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .footer-brand-col {
+    max-width: 100%;
+    gap: 0.5rem;
+  }
+
+  .footer-description {
+    font-size: 0.90625rem;
+    line-height: 1.55;
+  }
+
+  .footer-socials {
+    gap: 1.5rem;
+    margin-top: 0;
+  }
+
+  .footer-divider {
+    margin-bottom: 1.25rem;
+  }
+
+  .footer-copyright {
+    font-size: 0.8125rem;
+  }
+}

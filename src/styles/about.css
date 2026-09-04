@@ -1,0 +1,347 @@
+/* About Section - Editorial Personal Profile Theme */
+
+.about-section {
+  position: relative;
+  padding: 7rem 0 7.5rem;
+  scroll-margin-top: var(--header-height);
+  background-color: var(--bg-primary);
+  border-top: 1px solid var(--border-subtle);
+  overflow: hidden;
+}
+
+/* Atmospheric background ambient teal aura */
+.about-ambient-glow {
+  position: absolute;
+  top: 30%;
+  left: -8%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(
+    circle,
+    rgba(5, 101, 92, 0.14) 0%,
+    rgba(5, 101, 92, 0.03) 50%,
+    transparent 70%
+  );
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.about-container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 2.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Clean editorial two-column layout with refined balance */
+.about-layout-grid {
+  display: grid;
+  grid-template-columns: 330px 1fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+/* ==========================================================================
+   Left Column: Refined Personal Profile Portrait (15-20% larger, balanced)
+   ========================================================================== */
+
+.about-visual-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+}
+
+.about-portrait-stage {
+  position: relative;
+  width: 100%;
+  max-width: 330px;
+}
+
+/* Subtle teal atmospheric aura behind the profile card */
+.about-portrait-aura {
+  position: absolute;
+  inset: -14px;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(5, 101, 92, 0.28) 0%,
+    rgba(5, 101, 92, 0.08) 50%,
+    transparent 72%
+  );
+  border-radius: 30px;
+  filter: blur(26px);
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+/* Refined personal profile image container */
+.about-profile-card {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 405px;
+  border-radius: 22px;
+  overflow: hidden;
+  background-color: #0e1116;
+  border: 1px solid rgba(5, 101, 92, 0.32);
+  box-shadow: 
+    0 20px 45px -14px rgba(0, 0, 0, 0.75),
+    0 8px 20px -6px rgba(0, 0, 0, 0.5),
+    0 0 30px -6px rgba(5, 101, 92, 0.22);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-profile-card:hover {
+  border-color: rgba(5, 101, 92, 0.5);
+  box-shadow: 
+    0 22px 46px -14px rgba(0, 0, 0, 0.82),
+    0 10px 22px -6px rgba(0, 0, 0, 0.55),
+    0 0 34px -4px rgba(5, 101, 92, 0.3);
+}
+
+.about-profile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 18%;
+  display: block;
+}
+
+/* Subtle studio vignette */
+.about-profile-vignette {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(9, 10, 12, 0.32) 0%, transparent 20%);
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   Right Column: Focus on About Editorial Text
+   ========================================================================== */
+
+.about-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  max-width: 620px;
+}
+
+/* Small label: ABOUT ME */
+.about-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--accent-teal);
+  margin-bottom: 1.25rem;
+}
+
+.about-tag-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--accent-teal);
+  box-shadow: 0 0 8px var(--accent-teal);
+}
+
+/* Heading: I'm Amirali. */
+.about-statement {
+  font-size: clamp(2.4rem, 4vw, 3.4rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+  color: #ffffff;
+  margin-bottom: 1.75rem;
+}
+
+.about-statement-serif {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent-teal);
+}
+
+/* Content paragraphs */
+.about-message-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+}
+
+/* First statement: clear, high-contrast, confident */
+.about-lead-paragraph {
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.65;
+  color: var(--text-primary);
+  letter-spacing: -0.012em;
+}
+
+/* Second statement */
+.about-paragraph {
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: var(--text-secondary);
+}
+
+/* Highlight: Let's make more sales. */
+.about-highlight-wrapper {
+  margin-top: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.about-highlight-dash {
+  width: 28px;
+  height: 2px;
+  background-color: var(--accent-teal);
+  display: inline-block;
+  flex-shrink: 0;
+  border-radius: 2px;
+}
+
+.about-highlight {
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.4;
+  color: #ffffff;
+  letter-spacing: -0.015em;
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+
+@media (max-width: 960px) {
+  .about-section {
+    padding: 5rem 0 5.5rem;
+  }
+
+  .about-layout-grid {
+    grid-template-columns: 280px 1fr;
+    gap: 2.75rem;
+  }
+
+  .about-portrait-stage {
+    max-width: 280px;
+  }
+
+  .about-profile-card {
+    height: 350px;
+  }
+
+  .about-statement {
+    font-size: 2.25rem;
+  }
+
+  .about-lead-paragraph {
+    font-size: 1.15rem;
+  }
+
+  .about-paragraph {
+    font-size: 1.05rem;
+  }
+
+  .about-highlight {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-section {
+    padding: 4.25rem 0 4.75rem;
+  }
+
+  .about-container {
+    padding: 0 1.5rem;
+  }
+
+  .about-layout-grid {
+    grid-template-columns: 1fr;
+    gap: 2.75rem;
+  }
+
+  .about-visual-wrapper {
+    justify-content: flex-start;
+  }
+
+  .about-portrait-stage {
+    max-width: 230px;
+  }
+
+  .about-profile-card {
+    height: 285px;
+  }
+
+  .about-statement {
+    font-size: 2rem;
+  }
+
+  .about-lead-paragraph {
+    font-size: 1.1rem;
+  }
+
+  .about-paragraph {
+    font-size: 1rem;
+  }
+
+  .about-highlight {
+    font-size: 1.15rem;
+  }
+}
+
+@media (max-width: 540px) {
+  .about-section {
+    padding: 4.5rem 0 4.5rem;
+    border-top: 1px solid rgba(5, 101, 92, 0.2);
+  }
+
+  .about-container {
+    padding: 0 1.25rem;
+  }
+
+  .about-layout-grid {
+    gap: 2.625rem;
+  }
+
+  .about-portrait-stage {
+    max-width: 190px;
+  }
+
+  .about-portrait-aura {
+    inset: -6px;
+    border-radius: 20px;
+    filter: blur(14px);
+    opacity: 0.65;
+  }
+
+  .about-profile-card {
+    height: 230px;
+    border-radius: 16px;
+    background-color: #0b0e12;
+    border: 1px solid rgba(5, 101, 92, 0.45);
+    box-shadow: 
+      0 12px 28px -8px rgba(0, 0, 0, 0.7),
+      0 4px 12px -4px rgba(0, 0, 0, 0.45),
+      0 0 0 1px rgba(5, 101, 92, 0.15),
+      0 0 22px -4px rgba(5, 101, 92, 0.22);
+  }
+
+  .about-profile-vignette {
+    background: linear-gradient(to top, rgba(9, 10, 12, 0.38) 0%, transparent 26%);
+  }
+
+  .about-statement {
+    font-size: 1.85rem;
+  }
+}
