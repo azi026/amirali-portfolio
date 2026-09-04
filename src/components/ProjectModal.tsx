@@ -118,22 +118,14 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                   <a
                     href="#contact"
                     className="project-modal-btn-primary"
+                    data-open-inquiry="true"
                     onClick={(e) => {
+                      e.preventDefault();
                       onClose();
-                      const target = document.getElementById('contact') || document.getElementById('process');
-                      if (target) {
-                        e.preventDefault();
-                        const headerEl = document.getElementById('main-navbar');
-                        const headerHeight = headerEl ? headerEl.getBoundingClientRect().height : (window.innerWidth <= 900 ? 64 : 80);
-                        const elementPosition = target.getBoundingClientRect().top;
-                        const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
-                        setTimeout(() => {
-                          window.scrollTo({ top: Math.max(0, offsetPosition), behavior: 'smooth' });
-                        }, 120);
-                      }
+                      window.dispatchEvent(new CustomEvent('open-inquiry'));
                     }}
                   >
-                    <span>Start a project like this</span>
+                    <span>Start a Project</span>
                     <ArrowUpRight size={15} />
                   </a>
                 </div>

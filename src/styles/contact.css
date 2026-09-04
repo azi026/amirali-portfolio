@@ -266,20 +266,32 @@
 /* Responsive Styles */
 @media (max-width: 860px) {
   .contact-section {
-    padding: 5.25rem 0 3rem;
+    padding: 4rem 0 3.5rem;
     scroll-margin-top: calc(var(--header-height) + 1.25rem);
   }
 
   .contact-card {
-    padding: 3.5rem 2rem 3rem;
+    padding: 3rem 1.75rem 2.75rem;
+  }
+
+  .contact-tag {
+    margin-bottom: 1.125rem;
+  }
+
+  .contact-title {
+    margin-bottom: 1rem;
+  }
+
+  .contact-description {
+    margin-bottom: 2rem;
   }
 
   .contact-actions {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    gap: 1.5rem;
-    margin-bottom: 2.5rem;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
   }
 
   .contact-btn-primary {
@@ -294,7 +306,7 @@
   }
 
   .contact-trust-indicator {
-    margin-bottom: 2.75rem;
+    margin-bottom: 1.375rem;
   }
 
   .contact-details {
@@ -302,7 +314,7 @@
     gap: 0.875rem;
     justify-content: center;
     align-items: center;
-    padding-top: 2rem;
+    padding-top: 1.25rem;
   }
 
   .contact-detail-separator {
@@ -312,7 +324,7 @@
 
 @media (max-width: 540px) {
   .contact-section {
-    padding: 4.25rem 0 2.6rem;
+    padding: 2.75rem 0 3.5rem;
     scroll-margin-top: calc(var(--header-height) + 1.25rem);
   }
 
@@ -321,23 +333,28 @@
   }
 
   .contact-card {
-    padding: 3.25rem 1.25rem 2.75rem;
+    padding: 2.25rem 1.25rem 2.25rem;
     border-radius: 16px;
+  }
+
+  .contact-tag {
+    margin-bottom: 0.875rem;
   }
 
   .contact-title {
     font-size: 2.15rem;
+    margin-bottom: 0.875rem;
   }
 
   .contact-description {
     font-size: 1.0625rem;
     line-height: 1.7;
-    margin-bottom: 2.25rem;
+    margin-bottom: 1.75rem;
   }
 
   .contact-actions {
-    gap: 1.625rem;
-    margin-bottom: 2.75rem;
+    gap: 1.125rem;
+    margin-bottom: 1.875rem;
   }
 
   .contact-btn-primary {
@@ -348,11 +365,11 @@
     font-size: 0.84375rem;
     font-weight: 500;
     color: rgba(255, 255, 255, 0.82);
-    margin-bottom: 2.75rem;
+    margin-bottom: 1.125rem;
   }
 
   .contact-details {
     font-size: 0.8125rem;
-    padding-top: 2.25rem;
+    padding-top: 1.125rem;
   }
 }

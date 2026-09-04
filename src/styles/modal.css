@@ -57,7 +57,10 @@
 
 /* Modal Scrollable Container */
 .project-modal-scroll {
+  flex: 1 1 auto;
+  min-height: 0;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   padding: 0;
 }
 
@@ -212,23 +215,75 @@
 
 /* Responsive */
 @media (max-width: 680px) {
-  .project-modal-body {
-    padding: 1.5rem;
-    gap: 1.25rem;
+  .project-modal-backdrop {
+    padding: 0.75rem 0.5rem;
+    align-items: center;
+  }
+
+  .project-modal-dialog {
+    max-height: calc(100vh - 1.5rem);
+    max-height: calc(100dvh - 1.5rem);
+    border-radius: 16px;
+  }
+
+  .project-modal-close {
+    top: 1rem;
+    right: 1rem;
+  }
+
+  .project-modal-scroll {
+    overscroll-behavior: contain;
   }
 
   .project-modal-image-wrapper {
-    height: 240px;
+    height: 200px;
+    flex-shrink: 0;
+    padding: 1rem;
+  }
+
+  .project-modal-body {
+    padding: 1.25rem 1.25rem 1.25rem;
+    gap: 1.25rem;
+  }
+
+  .project-modal-tech-section {
+    padding-bottom: 0.5rem;
   }
 
   .project-modal-actions {
-    flex-direction: column-reverse;
-    width: 100%;
+    position: sticky;
+    bottom: 0;
+    z-index: 20;
+    background: rgba(9, 10, 12, 0.95);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-top: 1px solid var(--border-medium);
+    margin: 0 -1.25rem -1.25rem -1.25rem;
+    padding: 0.75rem 1rem calc(0.75rem + env(safe-area-inset-bottom, 0px));
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.625rem;
+    width: auto;
   }
 
-  .project-modal-btn-close,
-  .project-modal-btn-primary {
-    width: 100%;
+  .project-modal-btn-close {
+    flex: 0 0 auto;
+    width: auto;
+    padding: 0.7rem 1.1rem;
+    font-size: 0.8125rem;
+    white-space: nowrap;
     justify-content: center;
+  }
+
+  .project-modal-btn-primary {
+    flex: 1 1 auto;
+    width: auto;
+    padding: 0.7rem 1.1rem;
+    font-size: 0.8125rem;
+    justify-content: center;
+    white-space: nowrap;
   }
 }

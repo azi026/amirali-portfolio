@@ -52,6 +52,7 @@ export default function ProjectInquiryModal({ isOpen, onClose, initialWebsiteTyp
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const firstInputRef = useRef<HTMLInputElement>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   // Handle body scroll lock & Escape key
   useEffect(() => {
@@ -104,7 +105,38 @@ export default function ProjectInquiryModal({ isOpen, onClose, initialWebsiteTyp
     }
 
     setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+
+    if (Object.keys(newErrors).length > 0) {
+      const firstInvalidId = newErrors.name
+        ? 'inquiry-name'
+        : newErrors.email
+        ? 'inquiry-email'
+        : newErrors.details
+        ? 'inquiry-details'
+        : null;
+
+      if (firstInvalidId) {
+        setTimeout(() => {
+          const container = scrollContainerRef.current;
+          const targetEl = document.getElementById(firstInvalidId);
+          if (container && targetEl) {
+            const fieldGroup = targetEl.closest('.inquiry-field-group') || targetEl;
+            const containerRect = container.getBoundingClientRect();
+            const fieldRect = fieldGroup.getBoundingClientRect();
+            const offset = fieldRect.top - containerRect.top;
+
+            container.scrollTo({
+              top: container.scrollTop + offset - 20,
+              behavior: 'smooth',
+            });
+            targetEl.focus({ preventScroll: true });
+          }
+        }, 50);
+      }
+      return false;
+    }
+
+    return true;
   };
 
   const handleSubmit = (e: FormEvent) => {
@@ -155,7 +187,7 @@ export default function ProjectInquiryModal({ isOpen, onClose, initialWebsiteTyp
               <X size={18} aria-hidden="true" />
             </button>
 
-            <div className="inquiry-modal-scroll">
+            <div className="inquiry-modal-scroll" ref={scrollContainerRef}>
               {isSubmitted ? (
                 <motion.div
                   className="inquiry-success-view"
@@ -166,9 +198,9 @@ export default function ProjectInquiryModal({ isOpen, onClose, initialWebsiteTyp
                   <div className="inquiry-success-badge">
                     <Check size={26} aria-hidden="true" />
                   </div>
-                  <h3 className="inquiry-success-title">Thank you for reaching out.</h3>
+                  <h3 className="inquiry-success-title">Thanks for starting a conversation.</h3>
                   <p className="inquiry-success-desc">
-                    I&rsquo;ll review your project and get back to you within 24 hours.
+                    I&rsquo;ll review your project and get back to you soon.
                   </p>
                   <div className="inquiry-success-actions">
                     <button
@@ -365,7 +397,7 @@ export default function ProjectInquiryModal({ isOpen, onClose, initialWebsiteTyp
                         id="inquiry-submit-button"
                         disabled={isSubmitting}
                       >
-                        <span>{isSubmitting ? 'Sending inquiry...' : 'Send Project Inquiry →'}</span>
+                        <span>{isSubmitting ? 'Sending inquiry...' : 'Start a Conversation →'}</span>
                         {!isSubmitting && <ArrowRight size={16} aria-hidden="true" />}
                       </button>
 

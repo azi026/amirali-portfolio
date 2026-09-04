@@ -212,6 +212,23 @@ export default function Navbar({ onOpenInquiry }: NavbarProps = {}) {
         const headerEl = document.getElementById('main-navbar');
         const headerHeight = headerEl ? headerEl.getBoundingClientRect().height : (window.innerWidth <= 900 ? 64 : 80);
 
+        // For About section, scroll so the top of the About section content aligns cleanly below the fixed header and is visible immediately
+        if (targetId === 'about') {
+          const containerEl = (targetEl.querySelector('.about-container') || targetEl.querySelector('.about-layout-grid') || targetEl) as HTMLElement;
+          const containerRect = containerEl.getBoundingClientRect();
+          const containerAbsoluteTop = containerRect.top + window.pageYOffset;
+          const topClearance = window.innerWidth <= 900 ? 18 : 28;
+          const targetScrollTop = containerAbsoluteTop - headerHeight - topClearance;
+
+          requestAnimationFrame(() => {
+            window.scrollTo({
+              top: Math.max(0, targetScrollTop),
+              behavior: 'smooth',
+            });
+          });
+          return;
+        }
+
         // For Contact section on mobile, scroll so the card appears naturally centered with comfortable top spacing
         if (targetId === 'contact' && window.innerWidth <= 900) {
           const cardEl = targetEl.querySelector('.contact-card') as HTMLElement | null;
@@ -479,7 +496,6 @@ export default function Navbar({ onOpenInquiry }: NavbarProps = {}) {
                           aria-current={isActive ? 'page' : undefined}
                         >
                           <span className="navbar-mobile-link-label">{link.label}</span>
-                          <span className="navbar-mobile-link-arrow">→</span>
                         </motion.a>
                       );
                     })}
