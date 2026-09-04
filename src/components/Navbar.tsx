@@ -136,7 +136,7 @@ export default function Navbar({ onOpenInquiry }: NavbarProps = {}) {
   // Track active section on scroll
   useEffect(() => {
     const handleScroll = () => {
-      const sectionIds = ['hero', 'about', 'works', 'process'];
+      const sectionIds = ['hero', 'about', 'works', 'process', 'feedbacks', 'pricing', 'contact'];
       const headerEl = document.getElementById('main-navbar');
       const headerHeight = headerEl ? headerEl.getBoundingClientRect().height : (window.innerWidth <= 900 ? 64 : 80);
       const scrollPosition = window.pageYOffset + headerHeight + 60;
@@ -236,6 +236,47 @@ export default function Navbar({ onOpenInquiry }: NavbarProps = {}) {
             window.scrollTo({
               top: Math.max(0, targetScrollTop),
               behavior: 'smooth',
+            });
+          });
+          return;
+        }
+
+        // For Works section, scroll so the project cards are centered in the viewport and the bottom area (tags and View Case Study buttons) is visible
+        if (targetId === 'works') {
+          const cardEl = (targetEl.querySelector('.project-card') || targetEl.querySelector('.works-grid')) as HTMLElement | null;
+          const sectionRect = targetEl.getBoundingClientRect();
+          const sectionAbsoluteTop = sectionRect.top + window.pageYOffset;
+          const availableHeight = window.innerHeight - headerHeight;
+
+          let targetScrollTop: number;
+
+          if (cardEl) {
+            const cardRect = cardEl.getBoundingClientRect();
+            const cardAbsoluteTop = cardRect.top + window.pageYOffset;
+            const cardHeight = cardRect.height;
+
+            if (cardHeight < availableHeight) {
+              // Center the project cards in the viewport space below the navbar
+              const remainingSpace = availableHeight - cardHeight;
+              const centeredTopSpace = Math.round(remainingSpace / 2);
+              targetScrollTop = cardAbsoluteTop - headerHeight - centeredTopSpace;
+              // Ensure we don't scroll above the section top on ultra-tall displays
+              targetScrollTop = Math.max(sectionAbsoluteTop - headerHeight, targetScrollTop);
+            } else {
+              // If card is taller than available viewport, position so bottom area (tags and buttons) is comfortably visible
+              const bottomClearance = window.innerWidth <= 900 ? 20 : 28;
+              targetScrollTop = cardAbsoluteTop + cardHeight - window.innerHeight + bottomClearance;
+            }
+          } else {
+            // Calibrated fallback offset to scroll slightly lower past the section padding
+            const offset = window.innerWidth <= 900 ? 110 : 150;
+            targetScrollTop = sectionAbsoluteTop - headerHeight + offset;
+          }
+
+          requestAnimationFrame(() => {
+            window.scrollTo({
+              top: Math.max(0, targetScrollTop),
+              behavior: 'smooth'
             });
           });
           return;

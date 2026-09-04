@@ -8,6 +8,6 @@ export interface Project {
   role?: string;
   technologies: string[];
   deliverables?: string[];
-  year: string;
+  year?: string;
   liveUrl?: string;
 }

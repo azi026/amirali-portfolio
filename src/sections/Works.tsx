@@ -74,7 +74,6 @@ export default function Works() {
               <div className="project-card-body">
                 <div className="project-card-meta">
                   <span className="project-card-category">{project.category}</span>
-                  <span className="project-card-year">{project.year}</span>
                 </div>
 
                 <h3 className="project-card-title">{project.title}</h3>

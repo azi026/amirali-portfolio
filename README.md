@@ -1,10 +1,20 @@
-# Amirali Portfolio
+<div align="center">
+<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
+</div>
 
-Personal portfolio website built with React, TypeScript and Vite.
+# Run and deploy your AI Studio app
 
-## Features
+This contains everything you need to run your app locally.
 
-- Modern responsive design
-- Portfolio showcase
-- Contact section
-- Built with React and TypeScript
+View your app in AI Studio: https://ai.studio/apps/1cbe5fa6-340a-41ba-8143-385b77dcb8bf
+
+## Run Locally
+
+**Prerequisites:**  Node.js
+
+
+1. Install dependencies:
+   `npm install`
+2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
+3. Run the app:
+   `npm run dev`
