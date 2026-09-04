@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, FormEvent, MouseEvent } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { X, ArrowRight, Check } from 'lucide-react';
+import { X, ArrowRight, Check, AlertCircle, Loader2 } from 'lucide-react';
+import { supabase, isSupabaseConfigured } from '../lib/supabase';
 import '../styles/inquiry-modal.css';
 
 interface ProjectInquiryModalProps {
@@ -48,6 +49,7 @@ export default function ProjectInquiryModal({ isOpen, onClose, initialWebsiteTyp
   }, [initialWebsiteType, isOpen]);
 
   const [errors, setErrors] = useState<{ name?: string; email?: string; details?: string }>({});
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -86,6 +88,7 @@ export default function ProjectInquiryModal({ isOpen, onClose, initialWebsiteTyp
     setTimeout(() => {
       setIsSubmitted(false);
       setIsSubmitting(false);
+      setSubmitError(null);
       setErrors({});
     }, 300);
   };
@@ -139,17 +142,54 @@ export default function ProjectInquiryModal({ isOpen, onClose, initialWebsiteTyp
     return true;
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    setSubmitError(null);
     if (!validate()) return;
 
     setIsSubmitting(true);
 
-    // Simulate refined studio submission
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      if (!isSupabaseConfigured) {
+        throw new Error(
+          'Supabase is not configured yet. Please configure VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY in your project settings.'
+        );
+      }
+
+      // Format optional notes (company/website) into the message column
+      const formattedMessage = [
+        details.trim(),
+        company.trim() ? `Company / Brand: ${company.trim()}` : '',
+        currentWebsite.trim() ? `Current Website: ${currentWebsite.trim()}` : '',
+      ]
+        .filter(Boolean)
+        .join('\n\n');
+
+      const { error } = await supabase.from('inquiries').insert([
+        {
+          name: name.trim(),
+          email: email.trim(),
+          service: websiteType,
+          budget: budget,
+          message: formattedMessage || details.trim(),
+        },
+      ]);
+
+      if (error) {
+        throw new Error(error.message || 'Failed to submit inquiry. Please try again.');
+      }
+
       setIsSubmitted(true);
-    }, 700);
+    } catch (err: unknown) {
+      const errorMessage =
+        err instanceof Error
+          ? err.message
+          : 'Something went wrong while sending your inquiry. Please try again.';
+      console.error('Error submitting inquiry to Supabase:', err);
+      setSubmitError(errorMessage);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -215,6 +255,7 @@ export default function ProjectInquiryModal({ isOpen, onClose, initialWebsiteTyp
                       className="inquiry-reset-btn"
                       onClick={() => {
                         setIsSubmitted(false);
+                        setSubmitError(null);
                         setName('');
                         setEmail('');
                         setCompany('');
@@ -391,14 +432,30 @@ export default function ProjectInquiryModal({ isOpen, onClose, initialWebsiteTyp
 
                     {/* Submit Area */}
                     <div className="inquiry-actions">
+                      {submitError && (
+                        <div className="inquiry-submit-error" role="alert">
+                          <AlertCircle size={16} className="inquiry-submit-error-icon" aria-hidden="true" />
+                          <span>{submitError}</span>
+                        </div>
+                      )}
+
                       <button
                         type="submit"
                         className="inquiry-submit-btn"
                         id="inquiry-submit-button"
                         disabled={isSubmitting}
                       >
-                        <span>{isSubmitting ? 'Sending inquiry...' : 'Start a Conversation →'}</span>
-                        {!isSubmitting && <ArrowRight size={16} aria-hidden="true" />}
+                        {isSubmitting ? (
+                          <>
+                            <Loader2 size={16} className="animate-spin" aria-hidden="true" />
+                            <span>Sending inquiry...</span>
+                          </>
+                        ) : (
+                          <>
+                            <span>Start a Conversation →</span>
+                            <ArrowRight size={16} aria-hidden="true" />
+                          </>
+                        )}
                       </button>
 
                       <p className="inquiry-meta-note">

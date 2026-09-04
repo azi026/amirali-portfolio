@@ -299,6 +299,24 @@
   box-shadow: 0 -10px 24px rgba(0, 0, 0, 0.45);
 }
 
+.inquiry-submit-error {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  color: #fca5a5;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+}
+
+.inquiry-submit-error-icon {
+  flex-shrink: 0;
+  color: #ef4444;
+}
+
 .inquiry-submit-btn {
   display: inline-flex;
   align-items: center;
