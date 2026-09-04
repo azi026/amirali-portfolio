@@ -51,10 +51,13 @@ export default function ProjectInquiryModal({ isOpen, onClose, initialWebsiteTyp
   const [errors, setErrors] = useState<{ name?: string; email?: string; details?: string }>({});
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const firstInputRef = useRef<HTMLInputElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const successTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const autoCloseTimerRef = useRef<NodeJS.Timeout | null>(null);
 
   // Handle body scroll lock & Escape key
   useEffect(() => {
@@ -82,16 +85,50 @@ export default function ProjectInquiryModal({ isOpen, onClose, initialWebsiteTyp
     };
   }, [isOpen, onClose]);
 
+  // Clean up any pending success transition or auto-close timer on unmount
+  useEffect(() => {
+    return () => {
+      if (successTimerRef.current) {
+        clearTimeout(successTimerRef.current);
+      }
+      if (autoCloseTimerRef.current) {
+        clearTimeout(autoCloseTimerRef.current);
+      }
+    };
+  }, []);
+
   // Reset state when modal is closed
   const handleClose = () => {
+    if (successTimerRef.current) {
+      clearTimeout(successTimerRef.current);
+    }
+    if (autoCloseTimerRef.current) {
+      clearTimeout(autoCloseTimerRef.current);
+    }
     onClose();
     setTimeout(() => {
       setIsSubmitted(false);
+      setIsSuccess(false);
       setIsSubmitting(false);
       setSubmitError(null);
       setErrors({});
     }, 300);
   };
+
+  // Automatically close modal 3 seconds after showing "Inquiry Sent ✓"
+  useEffect(() => {
+    if (isSubmitted) {
+      autoCloseTimerRef.current = setTimeout(() => {
+        handleClose();
+      }, 3000);
+    }
+
+    return () => {
+      if (autoCloseTimerRef.current) {
+        clearTimeout(autoCloseTimerRef.current);
+      }
+    };
+  }, [isSubmitted]);
 
   const validate = () => {
     const newErrors: { name?: string; email?: string; details?: string } = {};
@@ -148,6 +185,7 @@ export default function ProjectInquiryModal({ isOpen, onClose, initialWebsiteTyp
     if (!validate()) return;
 
     setIsSubmitting(true);
+    setIsSuccess(false);
 
     try {
       if (!isSupabaseConfigured) {
@@ -179,7 +217,14 @@ export default function ProjectInquiryModal({ isOpen, onClose, initialWebsiteTyp
         throw new Error(error.message || 'Failed to submit inquiry. Please try again.');
       }
 
-      setIsSubmitted(true);
+      setIsSubmitting(false);
+      setIsSuccess(true);
+
+      // Smooth UX transition to confirmation screen after showing "Inquiry Sent ✓"
+      if (successTimerRef.current) clearTimeout(successTimerRef.current);
+      successTimerRef.current = setTimeout(() => {
+        setIsSubmitted(true);
+      }, 700);
     } catch (err: unknown) {
       const errorMessage =
         err instanceof Error
@@ -187,8 +232,8 @@ export default function ProjectInquiryModal({ isOpen, onClose, initialWebsiteTyp
           : 'Something went wrong while sending your inquiry. Please try again.';
       console.error('Error submitting inquiry to Supabase:', err);
       setSubmitError(errorMessage);
-    } finally {
       setIsSubmitting(false);
+      setIsSuccess(false);
     }
   };
 
@@ -238,9 +283,9 @@ export default function ProjectInquiryModal({ isOpen, onClose, initialWebsiteTyp
                   <div className="inquiry-success-badge">
                     <Check size={26} aria-hidden="true" />
                   </div>
-                  <h3 className="inquiry-success-title">Thanks for starting a conversation.</h3>
+                  <h3 className="inquiry-success-title">Inquiry Sent ✓</h3>
                   <p className="inquiry-success-desc">
-                    I&rsquo;ll review your project and get back to you soon.
+                    Thanks for starting a conversation! I&rsquo;ll review your project and get back to you soon.
                   </p>
                   <div className="inquiry-success-actions">
                     <button
@@ -254,7 +299,11 @@ export default function ProjectInquiryModal({ isOpen, onClose, initialWebsiteTyp
                       type="button"
                       className="inquiry-reset-btn"
                       onClick={() => {
+                        if (successTimerRef.current) clearTimeout(successTimerRef.current);
+                        if (autoCloseTimerRef.current) clearTimeout(autoCloseTimerRef.current);
                         setIsSubmitted(false);
+                        setIsSuccess(false);
+                        setIsSubmitting(false);
                         setSubmitError(null);
                         setName('');
                         setEmail('');
@@ -441,14 +490,19 @@ export default function ProjectInquiryModal({ isOpen, onClose, initialWebsiteTyp
 
                       <button
                         type="submit"
-                        className="inquiry-submit-btn"
+                        className={`inquiry-submit-btn ${isSuccess ? 'is-success' : ''}`}
                         id="inquiry-submit-button"
-                        disabled={isSubmitting}
+                        disabled={isSubmitting || isSuccess}
                       >
                         {isSubmitting ? (
                           <>
                             <Loader2 size={16} className="animate-spin" aria-hidden="true" />
-                            <span>Sending inquiry...</span>
+                            <span>Sending your inquiry...</span>
+                          </>
+                        ) : isSuccess ? (
+                          <>
+                            <Check size={16} aria-hidden="true" />
+                            <span>Inquiry Sent ✓</span>
                           </>
                         ) : (
                           <>
